@@ -1,0 +1,21 @@
+management:
+  endpoints:
+    web:
+      base-path: /manage
+      exposure:
+        include: health, info, prometheus, threaddump, metrics, env, dependencies
+  metrics:
+    distribution:
+      percentiles-histogram:
+        http.server.requests: true
+        hystrix.latency.total: true
+      sla:
+        http.server.requests: 100ms, 500ms
+        hystrix.latency.total: 100ms, 500ms
+  endpoint:
+    health:
+      show-details: always
+
+
+
+connectionUrl: "mysql://root:ir0n27@127.0.0.1:3306/wm_setting"
