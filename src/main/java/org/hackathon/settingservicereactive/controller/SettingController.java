@@ -1,6 +1,6 @@
 package org.hackathon.settingservicereactive.controller;
 
-import org.hackathon.settingservicereactive.dto.Dimension;
+import org.hackathon.settingservicereactive.domain.Dimension;
 import org.hackathon.settingservicereactive.service.SettingService;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,10 +1,8 @@
 package org.hackathon.settingservicereactive.service;
 
-import org.hackathon.settingservicereactive.dto.Dimension;
-import org.springframework.data.r2dbc.function.DatabaseClient;
+import org.hackathon.settingservicereactive.domain.Dimension;
+import org.hackathon.settingservicereactive.repository.DimensionRepository;
 import org.springframework.stereotype.Service;
-
-import java.util.Map;
 
 import reactor.core.publisher.Flux;
 
@@ -12,20 +10,13 @@ import reactor.core.publisher.Flux;
 public class SettingService {
 
 
-  private final DatabaseClient databaseClient;
+  private final DimensionRepository dimensionRepository;
 
-  public SettingService(DatabaseClient databaseClient) {
-    this.databaseClient = databaseClient;
+  public SettingService(DimensionRepository dimensionRepository) {
+    this.dimensionRepository = dimensionRepository;
   }
 
   public Flux<Dimension> getAllDimensions() {
-    return databaseClient.execute().sql("SELECT * FROM dimension").fetch().all().map(SettingService::toDimension);
-  }
-
-
-  private static Dimension toDimension(Map<String, Object> map) {
-    Integer id = (Integer) map.get("id");
-    String fn = (String) map.get("object_id");
-    return new Dimension(id, fn);
+    return dimensionRepository.findAll();
   }
 }

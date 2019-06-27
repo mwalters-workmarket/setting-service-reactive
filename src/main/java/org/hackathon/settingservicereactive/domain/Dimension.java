@@ -1,18 +1,23 @@
-package org.hackathon.settingservicereactive.dto;
+package org.hackathon.settingservicereactive.domain;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
 
-import java.io.Serializable;
+@Table
+public class Dimension {
 
-public class Dimension implements Serializable {
-
+  @Id
   private Integer id;
+
+  @Column("object_id")
   private String objectId;
 
+  public Dimension(){}
   public Dimension(Integer id, String objectId){
     this.id = id;
     this.objectId = objectId;
   }
-
 
   public Integer getId() {
     return id;
