@@ -16,6 +16,12 @@ Usage:
 
 run the script `./runEverything.sh` to start mysql container, execute flyway migrations, start the app
 
-then `curl localhost:8080/dimensions` to get all dimensions, streaming the response
+then `curl localhost:8080/dimensions` to get all dimensions, streaming the response,
+
+or  `curl -X POST http://localhost:8080/dimension` to create a new dimension whose objectId is a random UUID and dimensionTypeId is 0, streaming the resposne.
+
+
+
+
 
 
